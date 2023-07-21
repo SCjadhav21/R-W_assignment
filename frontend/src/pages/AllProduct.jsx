@@ -15,7 +15,6 @@ const AllProduct = () => {
   let [data, setData] = useState();
   const [loading, setLoading] = useState(false);
 
-  console.log(store);
   useEffect(() => {
     setLoading(true);
     let data = axios
