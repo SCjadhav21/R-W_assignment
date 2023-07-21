@@ -28,12 +28,13 @@ import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 
 import { DeleteProduct, EditProducts, getData } from "./ApiProductRequest";
 import { useSelector } from "react-redux";
+import AddProducts from "./AddProducts";
 
 const Product = () => {
   const store = useSelector((store) => store);
   let [data, setData] = useState();
   const [loading, setLoading] = useState();
-  const [reload, SetReload] = useState(false);
+  const [reload, setReload] = useState(false);
   const [modalData, setModalData] = useState();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addproducts, setAddproducts] = useState(false);
@@ -68,7 +69,7 @@ const Product = () => {
     EditProducts(store.data.token, modalData)
       .then((res) => {
         onClose();
-        SetReload(!reload);
+        setReload(!reload);
       })
       .finally(() => setLoading());
   };
@@ -77,7 +78,7 @@ const Product = () => {
     setLoading(true);
     DeleteProduct(store.data.token, id)
       .then((res) => {
-        SetReload(!reload);
+        setReload(!reload);
       })
       .finally(() => setLoading());
   }
@@ -237,6 +238,14 @@ const Product = () => {
       <Button m="20px" onClick={() => setAddproducts(true)}>
         Add More products
       </Button>
+      {addproducts && (
+        <AddProducts
+          ad={addproducts}
+          setReload={setReload}
+          reload={reload}
+          setAd={setAddproducts}
+        />
+      )}
     </div>
   );
 };

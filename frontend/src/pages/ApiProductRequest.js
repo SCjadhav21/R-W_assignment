@@ -25,7 +25,7 @@ const getData = () => {
   return axios.get("http://localhost:8080/product");
 };
 
-const AddProducts = (token, payload) => {
+const AddProduct = (token, payload) => {
   return axios({
     method: "POST",
     data: payload,
@@ -36,4 +36,4 @@ const AddProducts = (token, payload) => {
   });
 };
 
-export { EditProducts, getData, DeleteProduct, AddProducts };
+export { EditProducts, getData, DeleteProduct, AddProduct };
