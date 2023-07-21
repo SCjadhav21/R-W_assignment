@@ -2,6 +2,7 @@ let express = require("express");
 const { connection } = require("./config/db");
 const cors = require("cors");
 const { UserRoutes } = require("./routes/user.routes");
+const { ProductRoute } = require("./routes/product.routes");
 
 require("dotenv").config();
 
@@ -10,6 +11,10 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", UserRoutes, (req, res) => {
+  res.status(404).send("Routes not found");
+});
+
+app.use("/product", ProductRoute, (req, res) => {
   res.status(404).send("Routes not found");
 });
 

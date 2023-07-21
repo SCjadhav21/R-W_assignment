@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoutes";
 import Dashbourd from "../pages/dashbourd";
 import AllProduct from "../pages/AllProduct";
 import Product from "../pages/product";
+import NotFoundPage from "../pages/NotFoundPage";
 
 const AllRoutes = () => {
   return (
@@ -24,7 +25,15 @@ const AllRoutes = () => {
           }
         />
         <Route path="/" element={<AllProduct />} />
-        <Route path="/product" element={<Product />} />
+        <Route
+          path="/product"
+          element={
+            <PrivateRoute>
+              <Product />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Box>
   );

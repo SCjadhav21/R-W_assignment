@@ -47,7 +47,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     if (data.email && data.password) {
-      axios("https://real-ruby-pronghorn-slip.cyclic.app/user/login", {
+      axios("http://localhost:8080/user/login", {
         method: "POST",
         data: data,
         headers: {

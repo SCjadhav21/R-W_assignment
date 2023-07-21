@@ -54,7 +54,7 @@ const Signup = () => {
         alert("password is too stort");
         setLoading(false);
       } else {
-        axios("https://real-ruby-pronghorn-slip.cyclic.app/user/register", {
+        axios("http://localhost:8080/user/register", {
           method: "POST",
           data: data,
           headers: {
@@ -169,7 +169,7 @@ const Signup = () => {
                     padding="6px 0px"
                     color="#212121"
                   >
-                    Full name
+                    Full Name
                   </FormLabel>
                   <Input
                     name="name"
