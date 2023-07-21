@@ -1,5 +1,5 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
+
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../models/user.model");
 const { Authentication } = require("../middelware/authentication");
@@ -13,20 +13,13 @@ UserRoutes.post("/register", async (req, res) => {
     if (users.length > 0) {
       res.status(200).send("email is already exist try with new email");
     } else {
-      bcrypt.hash(password, 5, async (err, hash) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          const user = new UserModel({
-            name,
-            email,
-
-            password: hash,
-          });
-          await user.save();
-          res.status(201).send("user Registered successfully");
-        }
+      const user = new UserModel({
+        name,
+        email,
+        password,
       });
+      await user.save();
+      res.status(201).send("user Registered successfully");
     }
   } catch (err) {
     res.status(500).send(err);
@@ -39,22 +32,18 @@ UserRoutes.post("/login", async (req, res) => {
     const user = await UserModel.findOne({ email });
 
     if (user) {
-      bcrypt.compare(password, user.password, (err, result) => {
-        if (err) {
-          res.status(500).send(err);
-        } else if (result) {
-          const token = jwt.sign({ userId: user._id }, process.env.key);
-          res.status(200).send({
-            msg: "Login Successfull",
-            name: user.name,
-            email: user.email,
-            token: token,
-            userType: user.userType,
-          });
-        } else {
-          res.status(200).send("Wrong Credntials");
-        }
-      });
+      if (user.password === password) {
+        const token = jwt.sign({ userId: user._id }, process.env.key);
+        res.status(200).send({
+          msg: "Login Successfull",
+          name: user.name,
+          email: user.email,
+          token: token,
+          userType: user.userType,
+        });
+      } else {
+        res.status(200).send("Wrong Credntials");
+      }
     } else {
       res.status(200).send("Wrong Credntials");
     }
