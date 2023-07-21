@@ -32,7 +32,7 @@ ProductRoute.post("/", Authentication, async (req, res) => {
   }
 });
 
-ProductRoute.delete("/product/:id", Authentication, async (req, res) => {
+ProductRoute.delete("/:id", Authentication, async (req, res) => {
   let id = req.params.id;
 
   try {
@@ -44,7 +44,7 @@ ProductRoute.delete("/product/:id", Authentication, async (req, res) => {
     res.status(500).send(e.message);
   }
 });
-ProductRoute.patch("/product/:id", Authentication, async (req, res) => {
+ProductRoute.patch("/:id", Authentication, async (req, res) => {
   let id = req.params.id;
   let payload = req.body;
 
@@ -58,30 +58,6 @@ ProductRoute.patch("/product/:id", Authentication, async (req, res) => {
     res.status(200).send("product details updated successfully");
   } catch (e) {
     res.status(500).send(e.message);
-  }
-});
-
-ProductRoute.get("/searchbyname", async (req, res) => {
-  try {
-    const products = await ProductModel.find({
-      product_name: { $regex: req.query.search, $options: "i" },
-    });
-
-    res.status(200).send(products);
-  } catch (e) {
-    return res.status(500).send(e.message);
-  }
-});
-
-ProductRoute.get("/sortbyprice", async (req, res) => {
-  try {
-    const products = await ProductModel.find().sort({
-      product_price: req.query.order,
-    });
-
-    res.status(200).send(products);
-  } catch (e) {
-    return res.status(500).send(e.message);
   }
 });
 
