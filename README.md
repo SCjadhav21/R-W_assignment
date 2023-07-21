@@ -1,6 +1,6 @@
 # R-W_assignment
 
-frontend deployed url : https://64ba4b2ec60d8e5f33dc5bd9--incandescent-peony-4f7fc1.netlify.app/
+frontend deployed url : https://64ba5d9df2fd08007bf7dfdc--incandescent-peony-4f7fc1.netlify.app/
 <br>
 backend deployed url : https://fair-lamb-kimono.cyclic.app/
 
