@@ -19,7 +19,7 @@ const AllProduct = () => {
   useEffect(() => {
     setLoading(true);
     let data = axios
-      .get("http://localhost:8080/product")
+      .get("https://fair-lamb-kimono.cyclic.app/product")
       .then((res) => setData(res.data))
       .finally(() => setLoading(false));
   }, []);

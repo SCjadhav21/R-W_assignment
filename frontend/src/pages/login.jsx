@@ -47,12 +47,9 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     if (data.email && data.password) {
-      axios("http://localhost:8080/user/login", {
+      axios("https://fair-lamb-kimono.cyclic.app/user/login", {
         method: "POST",
         data: data,
-        headers: {
-          "content-type": "application/json",
-        },
       })
         .then((res) => {
           if (res.status === 200 && res.data.msg == "Login Successfull") {
@@ -103,7 +100,7 @@ const Login = () => {
   React.useEffect(() => {
     onOpen();
   }, []);
-  console.log(store);
+
   if (store.data.isAuthenticated) {
     return <Navigate to="/" />;
   }

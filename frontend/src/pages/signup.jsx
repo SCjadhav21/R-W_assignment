@@ -54,7 +54,7 @@ const Signup = () => {
         alert("password is too stort");
         setLoading(false);
       } else {
-        axios("http://localhost:8080/user/register", {
+        axios("https://fair-lamb-kimono.cyclic.app/user/register", {
           method: "POST",
           data: data,
           headers: {

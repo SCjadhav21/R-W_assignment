@@ -4,7 +4,7 @@ const EditProducts = (token, payload) => {
   return axios({
     method: "PATCH",
     data: payload,
-    url: `http://localhost:8080/product/${payload._id}`,
+    url: `https://fair-lamb-kimono.cyclic.app/product/${payload._id}`,
     headers: {
       Authorization: token,
     },
@@ -14,7 +14,7 @@ const EditProducts = (token, payload) => {
 const DeleteProduct = (token, id) => {
   return axios({
     method: "DELETE",
-    url: `http://localhost:8080/product/${id}`,
+    url: `https://fair-lamb-kimono.cyclic.app/product/${id}`,
     headers: {
       Authorization: token,
     },
@@ -22,14 +22,14 @@ const DeleteProduct = (token, id) => {
 };
 
 const getData = () => {
-  return axios.get("http://localhost:8080/product");
+  return axios.get("https://fair-lamb-kimono.cyclic.app/product");
 };
 
 const AddProduct = (token, payload) => {
   return axios({
     method: "POST",
     data: payload,
-    url: `http://localhost:8080/product/`,
+    url: `https://fair-lamb-kimono.cyclic.app/product/`,
     headers: {
       Authorization: token,
     },
