@@ -48,7 +48,7 @@ const Navbar = () => {
           <MenuList>
             <Link to="/info">
               <MenuItem icon={<GrUserAdmin className="icon" />}>
-                Dashbourd
+                Dashboard
               </MenuItem>
             </Link>
             <Link to="/">
@@ -60,7 +60,7 @@ const Navbar = () => {
               <MenuItem
                 icon={<MdOutlineProductionQuantityLimits className="icon" />}
               >
-                Products
+                My-Products
               </MenuItem>
             </Link>
             <Link to="/login">

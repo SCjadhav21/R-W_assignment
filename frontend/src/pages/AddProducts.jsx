@@ -84,7 +84,7 @@ const AddProducts = ({ ad, setReload, reload, setAd }) => {
               onChange={handelChange}
               isRequired
             />
-            <FormLabel>product Price (in lacs)</FormLabel>
+            <FormLabel>product Price</FormLabel>
             <Input
               placeholder="product product_price"
               value={modalData?.product_price}

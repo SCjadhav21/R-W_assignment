@@ -12,10 +12,25 @@ ProductRoute.get("/", async (req, res) => {
     res.status(500).send(e.message);
   }
 });
+ProductRoute.get("/myproduct", Authentication, async (req, res) => {
+  let userId = req.body.userId;
+  try {
+    const products = await ProductModel.find({ userId: userId });
+    res.status(200).send(products);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
 
 ProductRoute.post("/", Authentication, async (req, res) => {
-  let { product_name, product_image, colors_avl, product_price, product_desc } =
-    req.body;
+  let {
+    product_name,
+    product_image,
+    colors_avl,
+    product_price,
+    product_desc,
+    userId,
+  } = req.body;
 
   try {
     let product = new ProductModel({
@@ -23,6 +38,7 @@ ProductRoute.post("/", Authentication, async (req, res) => {
       product_image,
       colors_avl,
       product_price,
+      userId,
       product_desc,
     });
     await product.save();

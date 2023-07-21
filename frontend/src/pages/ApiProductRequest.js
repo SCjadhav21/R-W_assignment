@@ -21,8 +21,14 @@ const DeleteProduct = (token, id) => {
   });
 };
 
-const getData = () => {
-  return axios.get("https://fair-lamb-kimono.cyclic.app/product");
+const getData = (token) => {
+  return axios({
+    method: "GET",
+    url: `https://fair-lamb-kimono.cyclic.app/product/myproduct`,
+    headers: {
+      Authorization: token,
+    },
+  });
 };
 
 const AddProduct = (token, payload) => {

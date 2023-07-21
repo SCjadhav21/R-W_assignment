@@ -44,7 +44,7 @@ const Product = () => {
   useEffect(() => {
     setLoading(true);
 
-    getData()
+    getData(store.data.token)
       .then((res) => setData(res.data))
       .finally(() => setLoading(false));
   }, [reload]);
@@ -196,7 +196,7 @@ const Product = () => {
                 onChange={handelChange}
                 isRequired
               />
-              <FormLabel>product Price (in lacs)</FormLabel>
+              <FormLabel>product Price</FormLabel>
               <Input
                 placeholder="product product_price"
                 value={modalData?.product_price}
