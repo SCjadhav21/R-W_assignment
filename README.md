@@ -19,3 +19,9 @@ To run application locally :
 (2) go to terminal
 <br>
 (3) run npm start
+
+All Product screen shot :
+<img width="947" alt="product" src="https://github.com/SCjadhav21/R-W_assignment/assets/105934309/762be636-ead2-4133-a3bd-345c30df0618">
+<br>
+My-Product Page:
+<img width="960" alt="mp" src="https://github.com/SCjadhav21/R-W_assignment/assets/105934309/63979159-eac1-4150-afa4-2bd65f5fdba5">
